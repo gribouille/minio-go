@@ -10,8 +10,8 @@ package main
 import (
 	"log"
 
-	"github.com/minio/minio-go/v7"
-	"github.com/minio/minio-go/v7/pkg/credentials"
+	"github.com/gribouille/minio-go/v7"
+	"github.com/gribouille/minio-go/v7/pkg/credentials"
 )
 
 func main() {
@@ -41,8 +41,8 @@ package main
 import (
     "fmt"
 
-    "github.com/minio/minio-go/v7"
-    "github.com/minio/minio-go/v7/pkg/credentials"
+    "github.com/gribouille/minio-go/v7"
+    "github.com/gribouille/minio-go/v7/pkg/credentials"
 )
 
 func main() {
@@ -443,7 +443,7 @@ __minio.GetObjectOptions__
 
 |Field | Type | Description |
 |:---|:---|:---|
-| `opts.ServerSideEncryption` | _encrypt.ServerSide_ | Interface provided by `encrypt` package to specify server-side-encryption. (For more information see https://godoc.org/github.com/minio/minio-go/v7) |
+| `opts.ServerSideEncryption` | _encrypt.ServerSide_ | Interface provided by `encrypt` package to specify server-side-encryption. (For more information see https://godoc.org/github.com/gribouille/minio-go/v7) |
 | `opts.Internal`                | _minio.AdvancedGetOptions_               | This option is intended for internal use by MinIO server. This option should not be set unless the application is aware of intended use.
 __Return Value__
 
@@ -506,8 +506,8 @@ if err != nil {
 
 <a name="PutObjectFanOut"></a>
 ### PutObjectFanOut(ctx context.Context, bucket string, body io.Reader, fanOutReq ...PutObjectFanOutRequest) ([]PutObjectFanOutResponse, error)
-A variant of PutObject instead of writing a single object from a single stream multiple objects are written, defined via a list of 
-*PutObjectFanOutRequest*. Each entry in *PutObjectFanOutRequest* carries an object keyname and its relevant metadata if any. 
+A variant of PutObject instead of writing a single object from a single stream multiple objects are written, defined via a list of
+*PutObjectFanOutRequest*. Each entry in *PutObjectFanOutRequest* carries an object keyname and its relevant metadata if any.
 `Key` is mandatory, rest of the other options in *PutObjectFanOutRequest( are optional.
 
 __Parameters__
@@ -582,7 +582,7 @@ __minio.PutObjectOptions__
 | `opts.CacheControl`            | _string_               | Used to specify directives for caching mechanisms in both requests and responses e.g "max-age=600"                                                                                 |
 | `opts.Mode`                    | _*minio.RetentionMode_ | Retention mode to be set, e.g "COMPLIANCE"                                                                                                                                         |
 | `opts.RetainUntilDate`         | _*time.Time_           | Time until which the retention applied is valid                                                                                                                                    |
-| `opts.ServerSideEncryption`    | _encrypt.ServerSide_   | Interface provided by `encrypt` package to specify server-side-encryption. (For more information see https://godoc.org/github.com/minio/minio-go/v7)                               |
+| `opts.ServerSideEncryption`    | _encrypt.ServerSide_   | Interface provided by `encrypt` package to specify server-side-encryption. (For more information see https://godoc.org/github.com/gribouille/minio-go/v7)                               |
 | `opts.StorageClass`            | _string_               | Specify storage class for the object. Supported values for MinIO server are `REDUCED_REDUNDANCY` and `STANDARD`                                                                    |
 | `opts.WebsiteRedirectLocation` | _string_               | Specify a redirect for the object, to another object in the same bucket or to a external URL.                                                                                      |
 | `opts.SendContentMd5`          | _bool_                 | Specify if you'd like to send `content-md5` header with PutObject operation. Note that setting this flag will cause higher memory usage because of in-memory `md5sum` calculation. |
@@ -1223,7 +1223,7 @@ if err != nil {
 
 <a name="PresignedGetObject"></a>
 ### PresignedGetObject(ctx context.Context, bucketName, objectName string, expiry time.Duration, reqParams url.Values) (*url.URL, error)
-Generates a presigned URL for HTTP GET operations. Browsers/Mobile clients may point to this URL to directly download objects even if the bucket is private. This presigned URL can have an associated expiration time in seconds after which it is no longer operational. The maximum expiry is 604800 seconds (i.e. 7 days) and minimum is 1 second. 
+Generates a presigned URL for HTTP GET operations. Browsers/Mobile clients may point to this URL to directly download objects even if the bucket is private. This presigned URL can have an associated expiration time in seconds after which it is no longer operational. The maximum expiry is 604800 seconds (i.e. 7 days) and minimum is 1 second.
 
 __Parameters__
 
